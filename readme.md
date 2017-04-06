@@ -10,6 +10,29 @@ All expenses are monthly. The data is about expenses in Germany in
 the year 2015. The data was collected by the Federal Government. Sex, Age, Income-Braket
 etc. all refer to the main income provider in the household.
 
+The visualisation explains how some expenses are related to the people living in 
+the household, or to be more precise, mostly the main income provider. 
+
+One thing to notice is, while bigger households spend more in total, they spend 
+less per person (eg. 1,531 € per person in a single household, 778 € per person 
+in household of 5 people and up). This brings the spending per person of large 
+households very near te the spending per person in a household with a jobless main
+income earner (726 € per person). Large households are usually families that have
+many kids. These have apparently often only the financial means of a jobless living
+of wellfare.
+
+Another thing is the spending compared by income bracket of the main income earner. Richer 
+households spend about the same on some expenses (per person): food, living, communication.
+Other expenses differ widely. I would have expected a bigger spread in the living cost but
+richer household seem to not spend the extra money on bigger or more expensive apartments.
+The food does not include dining out and is probably therefore more or less the same. The
+richer households spend a lot more on eating out.
+
+While it looks like men spend a lot more than women (1,892 € for household where 
+a woman is the main income earner, 2,755 € for household where the men is the main
+income earner), the spending per person is roughly the same with a bit more spending in 
+households where a woman is the main income earner. 
+
 ## Design
 
 The original report about this data (see resources) uses nearly no 
@@ -35,19 +58,33 @@ household on average.
 
 ## Feedback
 
-After feedback from friends I added the option to switch between expenses for the 
+First Feedback: "I like the different groups of households and to see how they
+ differ in their spending. But to compare them I would like to know how much they 
+ spend for each one living in the household. Groceries for 2 people are not the same
+ like for 4 people. Also if I could know more about the people living in the household
+ I would be interested in that."
+
+After this feedback I added the option to switch between expenses for the 
 whole household and the expenses per household member (expenses of the whole household 
 divided by the count of its members). This shows e. g. that couples with children spend 
 more in total but much less for each member. It also showes that households with a 
 male main earner spend a lot more, but they spend about the same per household member.
+Data on the particular members of a household was not available in this study.
 
-I also added the titles and the total amount an no. of persons directly into the cards
-instead of into a legend. Further feedback made me change the subtitle in the cards 
-between ### € for # persons and ### @ * # persons, thus making it easy to understand
-how the amount is calculated.
+Second Feedback: "I think the credit card design shows very good the proportional 
+size of the budget of the household, but I would like to know how big the budget
+ actually is. I would have to add the bar all togher what is very difficult."
 
-Feedback also requested more groups to compare and did not like some others. 
-So I removed the "Type" group because it was to convoluted and split it up between 
+After this feedback I added the titles and the total amount an no. of persons 
+directly into the cards instead of into a legend. Further feedback made me 
+change the subtitle in the cards  between ### € for # persons and ### @ * # persons, 
+thus making it easy to understand how the amount is calculated.
+
+Third Feedback: "The visualisation looks sometimes very cluttered when there are more 
+than four of five charts on the page. They just all become very small and they are very
+hard to compare."
+
+I removed the "Type" group because it was to convoluted and split it up between 
 "Singel, Couple, Other", "Single Household" and "Couple Household". Age was was given to
 more groups, one for the younger, one for the older. The youngest group (< 25 years) was removed
 completely because the data was to sparse. Some subcategories were removed because the 
