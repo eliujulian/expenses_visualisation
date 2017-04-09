@@ -90,9 +90,39 @@
 
       .notes_anchor {
           grid-row: 5/6;
-          grid-column: 1/3;
+          grid-column: 2/3;
+          margin-top: 30px;
       }
 
+      .notes_text {
+          padding-top: 15px;
+          padding-bottom: 3px;
+          font-weight: normal;
+      }
+
+      .notes_button {
+          padding-top: 8px;
+          padding-bottom: 8px;
+          padding-left: 20px;
+          padding-right: 20px;
+          margin-top: 5px;
+          margin-left: 25px;
+          background-color: lightgrey;
+          text-align: center;
+          border-radius: 10px;
+          width: 150px;
+      }
+
+      .buttons_inline {
+          margin-top: 30px;
+          display: inline;
+      }
+
+      .notes_title {
+          font-weight: bold;
+          margin-top: 8px;
+          padding-bottom: 10px;
+      }
       svg {
           /*background-color: #ffe9bd;*/
           background-color: #F2F1EF;
@@ -661,13 +691,205 @@
 
       // Creating the body of the page
       function draw() {
-          d3.select('body').append("div").attr("class", "container").append("h2").text("").classed("chart_title", true);
-          d3.select('.container').append("div").attr("class", "svg_anchor");
-          d3.select('.container').append("div").attr("class", "notes_anchor").text("");
-          d3.select('.container').append("div").attr("class", "legend_anchor");
+          d3.select('body')
+              .append("div")
+              .attr("class", "container")
+              .append("h2")
+              .text("")
+              .classed("chart_title", true);
+
+          d3.select('.container')
+              .append("div")
+              .attr("class", "svg_anchor");
+
+          d3.select('.container')
+              .append("div")
+              .attr("class", "legend_anchor");
+
+          d3.select(".container")
+              .append("div")
+              .attr("class", "notes_anchor notes_title")
+              .text("Introductory Explanation");
+
+          d3.select(".notes_anchor")
+              .append("div")
+              .text("1. Spending per Household Size notes_title")
+              .attr("class", "notes_title");
+
+          d3.select(".notes_anchor")
+              .append("div")
+              .attr("class", "notes_text")
+              .text("Bigger household spend quite more than smaller households in total.")
+              .append("div")
+              .attr("class", "first_button notes_button")
+              .text("show");
+
+          d3.select(".first_button").on("click", function () {
+              d3.selectAll("svg").remove();
+              update_group("Household Size");
+              update_category("Total Expenses");
+              addCharts();
+          });
+
+          d3.select(".notes_anchor")
+              .append("div")
+              .attr("class", "notes_text")
+              .text("The spending for each person is considerably lower for bigger households, " +
+                  "at only 778 € per person for the largest group.")
+              .append("div")
+              .attr("class", "second_button notes_button")
+              .text("show");
+
+          d3.select(".second_button").on("click", function () {
+              d3.selectAll("svg").remove();
+              update_group("Household Size");
+              update_category("Total Expenses");
+              update_data_source("Person");
+              addCharts();
+          });
+
+          d3.select(".notes_anchor")
+              .append("div")
+              .attr("class", "notes_text")
+              .text("This brings the spending per person of large households very near to the spending " +
+                  "per person in a household with a jobless main income earner (726 € per person). " +
+                  "Large households are usually families that have many kids. " +
+                  "These have apparently often only the financial means of a jobless living of wellfare.")
+              .append("div")
+              .attr("class", "third_button notes_button")
+              .text("show");
+
+          d3.select(".third_button").on("click", function () {
+              d3.selectAll("svg").remove();
+              update_group("Status");
+              update_category("Total Expenses");
+              update_data_source("Person");
+              addCharts();
+          });
+
+          d3.select(".notes_anchor")
+              .append("div")
+              .attr("class", "notes_text notes_title")
+              .text("2. Spending of Low and High Income Households");
+
+          d3.select(".notes_anchor")
+              .append("div")
+              .attr("class", "notes_text")
+              .text("High income household spend more per person than low income households. " +
+                  "The income brackets indicate the income of the main income earner of the household.")
+              .append("div")
+              .attr("class", "fourth_button notes_button")
+              .text("show");
+
+          d3.select(".fourth_button").on("click", function () {
+              d3.selectAll("svg").remove();
+              update_group("Income Bracket");
+              update_category("Total Expenses");
+              update_data_source("Person");
+              addCharts();
+          });
+
+          var high_inc = d3.select(".notes_anchor")
+              .append("div")
+              .attr("class", "notes_text")
+              .text("A look into the details reveals that low income and high income households spend about the " +
+                  "same money per person on groceries (including alcohol and tabak), living (rent, energy) " +
+                  "and communication. This leaves quite some expenses where low income households are disadvantaged.");
+
+          var high_inc_anchor = high_inc.append("div").attr("class", "notes_text");
+
+          high_inc_anchor.append("div")
+              .attr("class", "fifth_button notes_button buttons_inline")
+              .text("Groceries");
+
+          high_inc_anchor.append("div")
+              .attr("class", "sixth_button notes_button buttons_inline")
+              .text("Living");
+
+          high_inc_anchor.append("div")
+              .attr("class", "seventh_button notes_button buttons_inline")
+              .text("Communication");
+
+          d3.select(".fifth_button").on("click", function () {
+              d3.selectAll("svg").remove();
+              update_group("Income Bracket");
+              update_category("Groceries, Drinks, Tabak");
+              update_data_source("Person");
+              addCharts();
+          });
+
+          d3.select(".sixth_button").on("click", function () {
+              d3.selectAll("svg").remove();
+              update_group("Income Bracket");
+              update_category("Living, Energy, Living-Repair");
+              update_data_source("Person");
+              addCharts();
+          });
+
+          d3.select(".seventh_button").on("click", function () {
+              d3.selectAll("svg").remove();
+              update_group("Income Bracket");
+              update_category("Communication");
+              update_data_source("Person");
+              addCharts();
+          });
+
+          d3.select(".notes_anchor")
+              .append("div")
+              .attr("class", "notes_text")
+              .text("Explore the difference for the other categories by clicking on the left hand buttons.");
+
+          d3.select(".notes_anchor")
+              .append("div")
+              .attr("class", "notes_text notes_title")
+              .text("3. Households with male or female Main Income Earner");
+
+          var group_gender = d3.select(".notes_anchor")
+              .append("div")
+              .attr("class", "notes_text")
+              .text("While it looks like men spend a lot more than women " +
+                  "(1,892 € for household where a woman is the main income earner, " +
+                  "2,755 € for household where the men is the main income earner), " +
+                  "the spending per person is roughly the same with a bit more " +
+                  "spending in households where a woman is the main income earner, " +
+                  "indicating that these households tend to be a bit better of than " +
+                  "the households where the men is the main income earner.");
+
+          var group_gender_anchor = group_gender.append("div").attr("class", "notes_text");
+
+          group_gender_anchor.append("div")
+              .attr("class", "eigth_button notes_button buttons_inline")
+              .text("per Household");
+
+          group_gender_anchor.append("div")
+              .attr("class", "ninth_button notes_button buttons_inline")
+              .text("per Person");
+
+          d3.select(".eigth_button").on("click", function () {
+              d3.selectAll("svg").remove();
+              update_group("Sex");
+              update_category("Total Expenses");
+              update_data_source("Household");
+              addCharts();
+          });
+
+          d3.select(".ninth_button").on("click", function () {
+              d3.selectAll("svg").remove();
+              update_group("Sex");
+              update_category("Total Expenses");
+              update_data_source("Person");
+              addCharts();
+          });
+
+          d3.select(".notes_anchor")
+              .append("div")
+              .attr("class", "notes_text notes_title")
+              .text("Have fun exploring the expenses with the various settings!");
+
 
           update_title();
 
+          // Category Buttons
           var buttons = d3.select(".container")
               .append("div")
               .attr("class", "category_buttons")

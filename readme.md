@@ -16,7 +16,7 @@ the household, or to be more precise, mostly the main income provider.
 One thing to notice is, while bigger households spend more in total, they spend 
 less per person (eg. 1,531 € per person in a single household, 778 € per person 
 in household of 5 people and up). This brings the spending per person of large 
-households very near te the spending per person in a household with a jobless main
+households very near to the spending per person in a household with a jobless main
 income earner (726 € per person). Large households are usually families that have
 many kids. These have apparently often only the financial means of a jobless living
 of wellfare.
